@@ -17,7 +17,7 @@ export class CardsList extends Component {
 
   render(): ReactNode {
     return (
-      <div className="card__container">
+      <div className="card__container" data-testid="cards-list">
         {this.state.cards?.map((user) => (
           <Card key={user.login.uuid} user={user} />
         ))}

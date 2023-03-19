@@ -19,13 +19,15 @@ export const Card: FC<CardProps> = ({ user }) => {
     <div className="card__item" data-testid="wrapper">
       <img src={medium} alt={name.first} />
       <CountryFlag countryCode={nat} svg />
-      <div className="card__name">
+      <div className="card__name" data-testid="name">
         {`${name.title}. ${name.first} `}
         {name.last}
       </div>
-      <div className="mail">{email}</div>
+      <div className="mail" data-testid="mail">
+        {email}
+      </div>
       <hr />
-      <div className="adress">
+      <div className="adress" data-testid="adress">
         <LocationIcon />
         {`${city} (${country})`}
       </div>
