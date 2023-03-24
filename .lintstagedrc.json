@@ -1,0 +1,4 @@
+{
+  "src/**/!(*test).{ts,tsx}": "eslint",
+  "src/**/*.*": "prettier --ignore-unknown --write"
+}
