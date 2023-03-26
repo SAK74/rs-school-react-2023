@@ -10,7 +10,7 @@ interface ListProps {
 export class CardsList extends Component<ListProps> {
   render(): ReactNode {
     return (
-      <div className="card__container">
+      <div className="card__container" data-testid="cards-list">
         {this.props.cards?.map((elem, ind) => (
           <Card key={ind + elem.name.first} user={elem} />
         ))}

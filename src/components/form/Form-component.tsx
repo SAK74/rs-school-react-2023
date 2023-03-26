@@ -35,6 +35,7 @@ export class Forms extends Component<Props, { cards: FormValues[] }> {
       date: createRef(),
       file: createRef(),
       nat: createRef(),
+      check: createRef(),
     };
     this.state = { cards: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -58,10 +59,15 @@ export class Forms extends Component<Props, { cards: FormValues[] }> {
           errorToShow.innerText = `Field ${name} not filled!`;
           errorToShow.style.display = "inline";
         } else {
-          throw new Error("Required ref to div Element!");
+          throw new Error("Required ref to span Element!");
         }
       } else {
-        if (errorToShow) {
+        if (elem.type === "checkbox" && !(elem as HTMLInputElement).checked) {
+          if (errorToShow) {
+            errorToShow.style.display = "inline";
+            errorToShow.innerText = "You must approve choose!";
+          }
+        } else if (errorToShow) {
           errorToShow.style.display = "none";
         }
         if (name === "check") {
@@ -155,7 +161,8 @@ export class Forms extends Component<Props, { cards: FormValues[] }> {
           <Input
             type="checkbox"
             name="check"
-            defaultChecked
+            // defaultChecked
+            ref={this.errRefObj.check}
             label="Approve choose"
           />
           <Input

@@ -33,7 +33,7 @@ export const Input = forwardRef<HTMLSpanElement, InputProps>(
       >
         <span>{label}</span>
         <input {...inputProps} ref={inputRef} onChange={handleInputChange} />
-        <span ref={ref}></span>
+        <span ref={ref} data-testid="error"></span>
         {inputProps.type === "file" && <img ref={imageRef} width="100" />}
       </label>
     );

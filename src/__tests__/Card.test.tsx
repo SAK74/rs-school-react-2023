@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import getData from "../services/getData";
 import { UserType } from "types";
 import { Card } from "components/cards/Card";
@@ -11,15 +11,20 @@ describe("Card component testing", () => {
     exampleUser = (await getData)[0];
   });
 
-  it("Should be render container in document", () => {
+  beforeEach(() => {
     render(<Card user={exampleUser} />);
     card = screen.getByTestId("wrapper");
+  });
+
+  afterEach(() => {
+    cleanup();
+  });
+
+  it("Should be render container in document", () => {
     expect(card).toBeInTheDocument();
   });
 
   it("Should images render", () => {
-    render(<Card user={exampleUser} />);
-    card = screen.getByTestId("wrapper");
     const images = screen.getAllByRole("img");
     expect(images).toHaveLength(2);
     images.forEach((elem) => expect(card).toContainElement(elem));
@@ -28,19 +33,16 @@ describe("Card component testing", () => {
   });
 
   it("Name should be displayed", () => {
-    render(<Card user={exampleUser} />);
     const _name = screen.getByTestId("name");
     expect(_name).toBeInTheDocument();
   });
 
   it("Mail should be displayed", () => {
-    render(<Card user={exampleUser} />);
     const _mail = screen.getByTestId("mail");
     expect(_mail).toBeInTheDocument();
   });
 
   it("Adress should be displayed", () => {
-    render(<Card user={exampleUser} />);
     const adress = screen.getByTestId("adress");
     expect(adress).toBeInTheDocument();
   });

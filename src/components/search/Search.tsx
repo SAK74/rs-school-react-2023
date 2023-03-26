@@ -26,7 +26,7 @@ export class Search extends Component<Props, State> {
 
   render(): ReactNode {
     return (
-      <div className="search__container">
+      <div className="search__container" data-testid="search-container">
         <SearchHeader title="Search bar" />
         <SearchBar
           value={this.state.input}
