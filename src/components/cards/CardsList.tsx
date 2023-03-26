@@ -1,25 +1,18 @@
-import { Component, ReactNode } from "react";
+import { ReactNode, Component } from "react";
 import { UserType } from "types";
 import { Card } from "./Card";
-import getData from "../../services/getData";
 import "./style.scss";
 
-interface State {
+interface ListProps {
   cards: UserType[];
 }
 
-export class CardsList extends Component {
-  state: Readonly<State> = { cards: [] };
-
-  componentDidMount() {
-    getData.then((data) => this.setState({ cards: data }));
-  }
-
+export class CardsList extends Component<ListProps> {
   render(): ReactNode {
     return (
-      <div className="card__container" data-testid="cards-list">
-        {this.state.cards?.map((user) => (
-          <Card key={user.login.uuid} user={user} />
+      <div className="card__container">
+        {this.props.cards?.map((elem, ind) => (
+          <Card key={ind + elem.name.first} user={elem} />
         ))}
       </div>
     );

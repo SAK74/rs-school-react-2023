@@ -1,0 +1,19 @@
+.input {
+  &__label-container {
+    span:first-child {
+      margin-right: 1rem;
+    }
+    input {
+      height: 1.5rem;
+    }
+    input:focus {
+      box-shadow: 2px 2px 3px lightblue inset;
+    }
+  }
+  &__file-container {
+    grid-template-columns: auto auto auto;
+    span:first-child {
+      display: none;
+    }
+  }
+}

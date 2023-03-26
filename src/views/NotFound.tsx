@@ -1,1 +1,1 @@
-export const NotFound = () => <h2>Sorry, page don't exist...</h2>;
+export const NotFound = () => <h2>Sorry, page don&apos;t exist...</h2>;

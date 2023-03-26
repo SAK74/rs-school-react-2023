@@ -1,11 +1,11 @@
-import { Search, CardsList } from "components";
+import { Search, ListShow } from "components";
 
 export const Home = () => {
   return (
     <>
       <Search />
       <hr />
-      <CardsList />
+      <ListShow />
     </>
   );
 };

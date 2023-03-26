@@ -2,7 +2,7 @@
 import { Header } from "components";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { About, Home, NotFound } from "views";
+import { About, Form, Home, NotFound } from "views";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about_us" element={<About />} />
+        <Route path="form" element={<Form />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <hr />
