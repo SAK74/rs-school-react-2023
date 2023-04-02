@@ -1,5 +1,5 @@
 export interface UserType {
-  gender: string;
+  gender?: string;
   name: Record<"first" | "last" | "title", string>;
   email: string;
   dob: {
@@ -7,13 +7,13 @@ export interface UserType {
     date: string;
   };
   nat: string;
-  picture: Record<"large" | "medium" | "thumbnail", string>;
-  login: Record<"uuid" | "username" | "password" | "sha1", string>;
-  registered: {
+  picture: Partial<Record<"large" | "medium" | "thumbnail", string>>;
+  login: Partial<Record<"uuid" | "username" | "password" | "sha1", string>>;
+  registered?: {
     age: number;
     date: string;
   };
-  location: Record<"city" | "country" | "state", string>;
+  location: Partial<Record<"city" | "country" | "state", string>>;
 }
 
 export interface FormValues {
@@ -25,7 +25,8 @@ export interface FormValues {
   check: boolean;
   file: {
     name: string;
-    content: string;
+    image: string;
+    content: FileList;
   };
   nat: string;
 }

@@ -1,4 +1,4 @@
-import { Component, ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { UserType } from "types";
 import getData from "../../services/getData";
 import "./style.scss";

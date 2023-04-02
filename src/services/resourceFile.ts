@@ -4,7 +4,7 @@ export async function resourceFile(arg: File) {
     fr.onload = ({ target }) => {
       res(target?.result as string);
     };
-    fr.readAsDataURL(arg);
+    arg && fr.readAsDataURL(arg);
   });
-  return result;
+  return arg ? result : "";
 }
