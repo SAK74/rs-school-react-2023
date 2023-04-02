@@ -1,21 +1,16 @@
-import { Component, ReactNode } from "react";
+import { Component, ReactNode, useEffect, useState } from "react";
 import { UserType } from "types";
 import getData from "../../services/getData";
 import "./style.scss";
 import { CardsList } from "./CardsList";
 
-interface State {
-  cards: UserType[];
-}
+export const ListShow = () => {
+  const [cards, setCards] = useState<UserType[]>([]);
+  useEffect(() => {
+    getData.then((data) => {
+      setCards(data);
+    });
+  }, []);
 
-export class ListShow extends Component {
-  state: Readonly<State> = { cards: [] };
-
-  componentDidMount() {
-    getData.then((data) => this.setState({ cards: data }));
-  }
-
-  render(): ReactNode {
-    return <CardsList cards={this.state.cards} />;
-  }
-}
+  return <CardsList cards={cards} />;
+};
