@@ -14,6 +14,7 @@ export const Card: FC<CardProps> = ({ user }) => {
     email,
     nat,
     location: { city, country },
+    dob: { age },
   } = user;
   return (
     <div className="card__item" data-testid="wrapper">
@@ -23,6 +24,7 @@ export const Card: FC<CardProps> = ({ user }) => {
         {`${name.title}. ${name.first} `}
         {name.last}
       </div>
+      <div>age: {age}</div>
       <div className="mail" data-testid="mail">
         {email}
       </div>

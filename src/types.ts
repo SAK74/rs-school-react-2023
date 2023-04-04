@@ -29,4 +29,5 @@ export interface FormValues {
     content: FileList;
   };
   nat: string;
+  mail: string;
 }

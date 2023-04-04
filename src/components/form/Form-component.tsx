@@ -15,6 +15,7 @@ const initialValues: Partial<FormValues> = {
   switch: "male",
   check: false,
   nat: "",
+  mail: "",
 };
 
 const nat = ["UA", "US", "GE", "FR", "GB", "CA", "FI", "NO", "BR", "DE"];
@@ -106,7 +107,12 @@ export const Forms = () => {
 
         <Input
           type="date"
-          {...register("date", { required: errText })}
+          {...register("date", {
+            required: errText,
+            validate: (val) =>
+              new Date().getFullYear() - new Date(val).getFullYear() >= 16 ||
+              "You must over 16",
+          })}
           label="Date of birth: "
           error={errors.date}
         />
@@ -121,6 +127,19 @@ export const Forms = () => {
           </select>
           {errors.nat && <span>{errors.nat.message}</span>}
         </div>
+        <Input
+          type="email"
+          label="You e-mail"
+          placeholder="Type You mail"
+          {...register("mail", {
+            required: errText,
+            pattern: {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: "Incorrect format",
+            },
+          })}
+          error={errors.mail}
+        />
         <Input
           type="file"
           accept="image/*"
@@ -159,7 +178,7 @@ export const Forms = () => {
           picture: {
             medium: card.file.image,
           },
-          email: "asdfg",
+          email: card.mail,
           location: {
             city: "Lviv",
             country: "Ukraine",
