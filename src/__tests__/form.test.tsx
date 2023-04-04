@@ -14,11 +14,13 @@ describe("Forms testing", () => {
     const select = screen.getAllByRole("combobox");
     const dateInput = screen.getAllByLabelText("Date of birth:");
     const fileField = screen.getAllByTestId("file-field");
-    expect(textInputs).toHaveLength(2);
+    const maiField = screen.getAllByPlaceholderText("Type You mail");
+    expect(textInputs).toHaveLength(3);
     expect(checkboxes).toHaveLength(2);
     expect(select).toHaveLength(2);
     expect(dateInput).toHaveLength(1);
     expect(fileField).toHaveLength(1);
+    expect(maiField).toHaveLength(1);
   });
 
   it("testing submit-button behavior before & after typing", () => {
@@ -37,12 +39,14 @@ describe("Testing form behavior", () => {
   });
   let textInputs: HTMLInputElement[],
     fileField: HTMLInputElement,
-    submitBtn: HTMLButtonElement;
+    submitBtn: HTMLButtonElement,
+    mailField: HTMLInputElement;
   beforeEach(() => {
     render(<Forms />);
     textInputs = screen.getAllByRole("textbox");
     fileField = screen.getByTestId("file-field");
     submitBtn = screen.getByRole("button", { name: "Submit" });
+    mailField = screen.getByPlaceholderText("Type You mail");
   });
 
   it("Error fields should be rendered if form is not complete", async () => {
@@ -59,6 +63,9 @@ describe("Testing form behavior", () => {
     }
     expect(screen.getByText("Choose a photo!")).toBeInTheDocument();
     expect(screen.getByText("Confirm Your choise")).toBeInTheDocument();
+    userEvent.type(mailField, "ycjycr");
+    const mailError = await screen.findByText("Incorrect format");
+    expect(mailError).toBeInTheDocument();
     expect(submitBtn).toBeDisabled();
   });
 
