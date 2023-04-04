@@ -36,17 +36,11 @@ describe("Testing form behavior", () => {
     Object.defineProperty(window, "confirm", { value: jest.fn() });
   });
   let textInputs: HTMLInputElement[],
-    // checkboxes: HTMLInputElement[],
-    // dateInputs: HTMLInputElement[],
     fileField: HTMLInputElement,
     submitBtn: HTMLButtonElement;
-  // let selects: HTMLSelectElement[];
   beforeEach(() => {
     render(<Forms />);
     textInputs = screen.getAllByRole("textbox");
-    // checkboxes = screen.getAllByRole("checkbox");
-    // selects = screen.getAllByRole("combobox");
-    // dateInputs = screen.getAllByLabelText("Date of birth:");
     fileField = screen.getByTestId("file-field");
     submitBtn = screen.getByRole("button", { name: "Submit" });
   });
