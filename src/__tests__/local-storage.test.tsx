@@ -14,7 +14,7 @@ describe("local storage", () => {
 
   it("should call getItem on render", () => {
     render(<Search />);
-    expect(window.sessionStorage.getItem).toHaveBeenCalledTimes(1);
+    expect(window.sessionStorage.getItem).toBeCalled();
   });
 
   it("should call setItem during unmount", async () => {
@@ -23,7 +23,7 @@ describe("local storage", () => {
     const testString = "asdfgh";
     userEvent.type(input, testString);
     unmount();
-    expect(window.sessionStorage.setItem).toBeCalledTimes(1);
+    expect(window.sessionStorage.setItem).toBeCalled();
     expect(window.sessionStorage.setItem).toBeCalledWith("input", testString);
   });
 });

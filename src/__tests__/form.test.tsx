@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Forms } from "components/form";
+import { resourceFile } from "services/resourceFile";
 
 describe("Forms testing", () => {
   beforeEach(() => {
@@ -13,11 +14,13 @@ describe("Forms testing", () => {
     const select = screen.getAllByRole("combobox");
     const dateInput = screen.getAllByLabelText("Date of birth:");
     const fileField = screen.getAllByTestId("file-field");
-    expect(textInputs).toHaveLength(2);
+    const maiField = screen.getAllByPlaceholderText("Type You mail");
+    expect(textInputs).toHaveLength(3);
     expect(checkboxes).toHaveLength(2);
     expect(select).toHaveLength(2);
     expect(dateInput).toHaveLength(1);
     expect(fileField).toHaveLength(1);
+    expect(maiField).toHaveLength(1);
   });
 
   it("testing submit-button behavior before & after typing", () => {
@@ -31,29 +34,47 @@ describe("Forms testing", () => {
 });
 
 describe("Testing form behavior", () => {
+  beforeAll(() => {
+    Object.defineProperty(window, "confirm", { value: jest.fn() });
+  });
   let textInputs: HTMLInputElement[],
-    // checkboxes: HTMLInputElement[],
-    // dateInput: HTMLInputElement[],
-    // fileField: HTMLInputElement[],
-    submitBtn: HTMLButtonElement;
-  // let selects: HTMLSelectElement[];
+    fileField: HTMLInputElement,
+    submitBtn: HTMLButtonElement,
+    mailField: HTMLInputElement;
   beforeEach(() => {
     render(<Forms />);
     textInputs = screen.getAllByRole("textbox");
-    // checkboxes = screen.getAllByRole("checkbox");
-    // selects = screen.getAllByRole("combobox");
-    // dateInput = screen.getAllByLabelText("Date of birth:");
-    // fileField = screen.getAllByTestId("file-field");
+    fileField = screen.getByTestId("file-field");
     submitBtn = screen.getByRole("button", { name: "Submit" });
+    mailField = screen.getByPlaceholderText("Type You mail");
   });
 
-  it("Error fields should be rendered if form is not complete", () => {
+  it("Error fields should be rendered if form is not complete", async () => {
     userEvent.type(textInputs[0], "asd");
     expect(submitBtn).toBeEnabled();
     userEvent.click(submitBtn);
-    const errors = screen.getAllByTestId("error");
+    const errors = await screen.findAllByTestId("error");
     for (const error of errors) {
       expect(error).toBeInTheDocument();
     }
+    const emptyFields = screen.getAllByText("Fill this field!");
+    for (const field of emptyFields) {
+      expect(field).toBeInTheDocument();
+    }
+    expect(screen.getByText("Choose a photo!")).toBeInTheDocument();
+    expect(screen.getByText("Confirm Your choise")).toBeInTheDocument();
+    userEvent.type(mailField, "ycjycr");
+    const mailError = await screen.findByText("Incorrect format");
+    expect(mailError).toBeInTheDocument();
+    expect(submitBtn).toBeDisabled();
+  });
+
+  it("testing file uploading", async () => {
+    const file = new File(["test"], "test.png");
+    userEvent.upload(fileField, file);
+    expect(fileField.files).toHaveLength(1);
+    const filePath = await resourceFile(file);
+    const imgContainer = screen.getByRole<HTMLImageElement>("img");
+    expect(imgContainer.src).toBe(filePath);
   });
 });
