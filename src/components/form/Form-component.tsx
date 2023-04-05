@@ -134,7 +134,7 @@ export const Forms = () => {
           {...register("mail", {
             required: errText,
             pattern: {
-              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, //eslint-disable-line
               message: "Incorrect format",
             },
           })}
