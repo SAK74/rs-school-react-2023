@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
-import { UserType } from "types";
-import getData from "../../services/getData";
+import { useEffect, useState, FC } from "react";
+import { RickandmortyType } from "types";
+import getData, { SearchParams } from "../../services/getApi";
 import "./style.scss";
 import { CardsList } from "./CardsList";
 
-export const ListShow = () => {
-  const [cards, setCards] = useState<UserType[]>([]);
+interface ListProps {
+  searchParams: SearchParams;
+}
+
+export const ListShow: FC<ListProps> = ({ searchParams }) => {
+  const [cards, setCards] = useState<RickandmortyType[]>([]);
   useEffect(() => {
-    getData.then((data) => {
+    getData(searchParams).then((data) => {
       setCards(data);
     });
-  }, []);
+  }, [searchParams]);
 
-  return <CardsList cards={cards} />;
+  return <CardsList cards={cards} type="api" />;
 };

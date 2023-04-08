@@ -164,6 +164,7 @@ export const Forms = () => {
         </button>
       </form>
       <CardsList
+        type="user"
         cards={cards.map((card) => ({
           name: {
             first: card.firstName,

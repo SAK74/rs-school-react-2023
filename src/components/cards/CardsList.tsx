@@ -1,18 +1,30 @@
 import { FC } from "react";
-import { UserType } from "types";
+import { CardType, UserType, RickandmortyType } from "types";
 import { Card } from "./Card";
+import { MortyCard } from "./MortCard";
 import "./style.scss";
 
 interface ListProps {
-  cards: UserType[];
+  type: "user" | "api";
+  cards: CardType[];
 }
 
 export const CardsList: FC<ListProps> = (props) => {
   return (
     <div className="card__container" data-testid="cards-list">
-      {props.cards?.map((elem, ind) => (
-        <Card key={ind + elem.name.first} user={elem} />
-      ))}
+      {props.cards?.map((elem, ind) =>
+        props.type === "user" ? (
+          <Card
+            key={ind + (elem as UserType).name.first}
+            user={elem as UserType}
+          />
+        ) : (
+          <MortyCard
+            key={(elem as RickandmortyType).id}
+            person={elem as RickandmortyType}
+          />
+        )
+      )}
     </div>
   );
 };

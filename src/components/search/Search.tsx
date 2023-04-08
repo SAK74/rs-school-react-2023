@@ -1,17 +1,27 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  FC,
+  useState,
+  useEffect,
+} from "react";
+import { SearchParams } from "services/getApi";
 import { SearchBar } from "./SearchBar";
 import { SearchHeader } from "./SearchHeader";
 import "./style.scss";
 
 const STOREDKEY = "input";
 
-export const Search = () => {
-  const stored = window.sessionStorage.getItem(STOREDKEY);
-  const [input, setInput] = useState(stored || "");
+interface SearchProps {
+  onSearchChange: Dispatch<SetStateAction<SearchParams>>;
+}
 
-  useEffect(() => () => {
-    window.sessionStorage.setItem(STOREDKEY, input);
-  });
+export const Search: FC<SearchProps> = ({ onSearchChange }) => {
+  const [input, setInput] = useState(
+    window.sessionStorage.getItem(STOREDKEY) || ""
+  );
+  useEffect(() => () => window.sessionStorage.setItem(STOREDKEY, input));
 
   const inputChange = ({
     target: { value },
@@ -22,7 +32,11 @@ export const Search = () => {
   return (
     <div className="search__container" data-testid="search-container">
       <SearchHeader title="Search bar" />
-      <SearchBar value={input} onChange={inputChange} />
+      <SearchBar
+        value={input}
+        onChange={inputChange}
+        onSearch={onSearchChange}
+      />
     </div>
   );
 };

@@ -22,11 +22,13 @@
   }
 
   &__bar {
+    display: grid;
+    box-shadow: 4px 4px 15px 3px $shadow-color;
     border-radius: 5px;
-    width: 30%;
     padding: 1rem;
     background-color: darken($bg-color, 50%);
-    box-shadow: 4px 4px 15px 3px $shadow-color;
+    grid-template-columns: auto auto auto;
+    row-gap: 1rem;
     > * {
       border-radius: 5px;
       padding: 0.4rem;
@@ -35,6 +37,8 @@
     button {
       cursor: pointer;
       text-transform: uppercase;
+      justify-self: center;
+      grid-column: 2/3;
     }
   }
 }
