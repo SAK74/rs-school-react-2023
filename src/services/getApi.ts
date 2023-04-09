@@ -1,4 +1,4 @@
-import axios, { isAxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { RickandmortyType } from "types";
 
 interface RespType {
@@ -17,20 +17,21 @@ export interface SearchParams {
   gender?: "female" | "male" | "genderless" | "unknown" | "";
 }
 
-axios.defaults.baseURL = "https://rickandmortyapi.com/api";
+const URL = "https://rickandmortyapi.com/api/character";
 
-export default function getApi(params: SearchParams) {
-  return axios<RespType>("character", {
-    params,
-  })
+export default function getApi(params?: SearchParams, url: string = URL) {
+  return axios
+    .get<RespType>(url, {
+      params,
+    })
     .then((resp) => resp.data.results)
     .catch((err: Error) => {
       let message = "";
-      if (isAxiosError(err)) {
-        message = JSON.stringify(err.response?.data);
+      if (err instanceof AxiosError) {
+        message = err.response?.data || err.message;
       } else {
         message = err.message;
       }
-      throw Error(message);
+      throw Error(JSON.stringify(message));
     });
 }

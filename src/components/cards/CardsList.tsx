@@ -30,7 +30,6 @@ export const CardsList: FC<ListProps> = (props) => {
               key={(elem as RickandmortyType).id}
               person={elem as RickandmortyType}
               onClick={() => {
-                console.log("click");
                 setShow(elem);
               }}
             />

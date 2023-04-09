@@ -13,12 +13,12 @@ describe("local storage", () => {
   });
 
   it("should call getItem on render", () => {
-    render(<Search />);
+    render(<Search onSearchChange={() => {}} />);
     expect(window.sessionStorage.getItem).toBeCalled();
   });
 
   it("should call setItem during unmount", async () => {
-    const { unmount } = render(<Search />);
+    const { unmount } = render(<Search onSearchChange={() => {}} />);
     const input = screen.getByRole("textbox");
     const testString = "asdfgh";
     userEvent.type(input, testString);
