@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Forms } from "components/form";
 import { resourceFile } from "services/resourceFile";
@@ -6,6 +6,9 @@ import { resourceFile } from "services/resourceFile";
 describe("Forms testing", () => {
   beforeEach(() => {
     render(<Forms />);
+  });
+  afterEach(() => {
+    cleanup();
   });
 
   it("should be specified quantity of fields", () => {

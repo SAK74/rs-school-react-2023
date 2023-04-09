@@ -1,4 +1,6 @@
-export const results = [
+import { RickandmortyType } from "types";
+
+export const results: RickandmortyType[] = [
   {
     id: 1,
     name: "Rick Sanchez",

@@ -34,8 +34,8 @@ export interface FormValues {
 
 export interface RickandmortyType {
   created: string;
-  episode: [];
-  gender: "female" | "male" | "genderless" | "unknown";
+  episode: string[];
+  gender: "Female" | "Male" | "Genderless" | "unknown";
   id: number;
   image: string;
   location: {
@@ -48,7 +48,7 @@ export interface RickandmortyType {
     url: string;
   };
   species: string;
-  status: "alive" | "dead" | "unknown";
+  status: "Alive" | "Dead" | "unknown";
   type: string;
   url: string;
 }

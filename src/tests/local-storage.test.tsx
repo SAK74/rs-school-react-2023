@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Search } from "components";
 
@@ -10,6 +10,9 @@ describe("local storage", () => {
         setItem: jest.fn(),
       },
     });
+  });
+  afterEach(() => {
+    cleanup();
   });
 
   it("should call getItem on render", () => {

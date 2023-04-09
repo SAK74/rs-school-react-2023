@@ -18,7 +18,12 @@ export const Modal: FC<{
           ev.stopPropagation();
         }}
       >
-        <span onClick={onClose} className="modal__close-button" title="close">
+        <span
+          onClick={onClose}
+          className="modal__close-button"
+          title="close"
+          data-testid="close-modal-btn"
+        >
           x
         </span>
         {children}
