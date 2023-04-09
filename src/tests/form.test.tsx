@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Forms } from "components/form";
 import { resourceFile } from "services/resourceFile";
@@ -26,12 +26,12 @@ describe("Forms testing", () => {
     expect(maiField).toHaveLength(1);
   });
 
-  it("testing submit-button behavior before & after typing", () => {
+  it("testing submit-button behavior before & after typing", async () => {
     const button = screen.getByRole("button");
     expect(button).toBeInTheDocument();
     expect(button).toBeDisabled();
     const textInput = screen.getAllByRole("textbox");
-    userEvent.type(textInput[1], "utifyc");
+    await waitFor(() => userEvent.type(textInput[1], "utifyc"));
     expect(button).toBeEnabled();
   });
 });
@@ -53,9 +53,9 @@ describe("Testing form behavior", () => {
   });
 
   it("Error fields should be rendered if form is not complete", async () => {
-    userEvent.type(textInputs[0], "asd");
+    await waitFor(() => userEvent.type(textInputs[0], "asd"));
     expect(submitBtn).toBeEnabled();
-    userEvent.click(submitBtn);
+    await waitFor(() => userEvent.click(submitBtn));
     const errors = await screen.findAllByTestId("error");
     for (const error of errors) {
       expect(error).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe("Testing form behavior", () => {
     }
     expect(screen.getByText("Choose a photo!")).toBeInTheDocument();
     expect(screen.getByText("Confirm Your choise")).toBeInTheDocument();
-    userEvent.type(mailField, "ycjycr");
+    await waitFor(() => userEvent.type(mailField, "ycjycr"));
     const mailError = await screen.findByText("Incorrect format");
     expect(mailError).toBeInTheDocument();
     expect(submitBtn).toBeDisabled();
@@ -74,9 +74,9 @@ describe("Testing form behavior", () => {
 
   it("testing file uploading", async () => {
     const file = new File(["test"], "test.png");
-    userEvent.upload(fileField, file);
+    await waitFor(() => userEvent.upload(fileField, file));
     expect(fileField.files).toHaveLength(1);
-    const filePath = await resourceFile(file);
+    const filePath = await waitFor(() => resourceFile(file));
     const imgContainer = screen.getByRole<HTMLImageElement>("img");
     expect(imgContainer.src).toBe(filePath);
   });
