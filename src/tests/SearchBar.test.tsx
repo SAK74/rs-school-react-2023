@@ -5,7 +5,7 @@ describe("Search bar testing", () => {
   beforeEach(() => {
     render(<SearchBar value="" onChange={() => {}} onSearch={() => {}} />);
   });
-  it("", () => {
+  it("All elements should be rendered", () => {
     const input = screen.getByRole("textbox");
     const selects = screen.getAllByRole("combobox");
     const btn = screen.getByRole("button", { name: "Search" });

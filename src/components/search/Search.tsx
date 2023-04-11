@@ -1,3 +1,4 @@
+import { STOREDKEY } from "glob-constans";
 import {
   ChangeEvent,
   Dispatch,
@@ -5,23 +6,30 @@ import {
   FC,
   useState,
   useEffect,
+  useRef,
 } from "react";
 import { SearchParams } from "services/getApi";
 import { SearchBar } from "./SearchBar";
 import { SearchHeader } from "./SearchHeader";
 import "./style.scss";
 
-const STOREDKEY = "input";
-
 interface SearchProps {
   onSearchChange: Dispatch<SetStateAction<SearchParams>>;
 }
 
 export const Search: FC<SearchProps> = ({ onSearchChange }) => {
-  const [input, setInput] = useState(
-    window.sessionStorage.getItem(STOREDKEY) || ""
+  const storedValue = window.sessionStorage.getItem(STOREDKEY);
+  const [input, setInput] = useState(storedValue || "");
+  const tempRef = useRef(input);
+
+  useEffect(
+    () => () => window.sessionStorage.setItem(STOREDKEY, tempRef.current),
+    []
   );
-  useEffect(() => () => window.sessionStorage.setItem(STOREDKEY, input));
+
+  useEffect(() => {
+    tempRef.current = input;
+  }, [input]);
 
   const inputChange = ({
     target: { value },
