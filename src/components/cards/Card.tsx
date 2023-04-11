@@ -5,9 +5,10 @@ import { ImLocation2 as LocationIcon } from "react-icons/im";
 
 interface CardProps {
   user: UserType;
+  onClick?: () => void;
 }
 
-export const Card: FC<CardProps> = ({ user }) => {
+export const Card: FC<CardProps> = ({ user, onClick }) => {
   const {
     name,
     picture: { medium },
@@ -17,7 +18,7 @@ export const Card: FC<CardProps> = ({ user }) => {
     dob: { age },
   } = user;
   return (
-    <div className="card__item" data-testid="wrapper">
+    <div className="card__item" data-testid="wrapper" onClick={onClick}>
       <img src={medium} alt={name.first} />
       <CountryFlag countryCode={nat} svg />
       <div className="card__name" data-testid="name">

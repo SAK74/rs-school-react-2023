@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { CardsList } from "../components";
+import { CardsList } from "components";
 import getData from "../services/getData";
 
 describe("Cards list testing", () => {
   beforeEach(async () => {
     const users = await getData;
-    render(<CardsList cards={users} />);
+    render(<CardsList cards={users} type="user" />);
   });
   it("Cards list should be rendered", () => {
     const _list = screen.getByTestId("cards-list");

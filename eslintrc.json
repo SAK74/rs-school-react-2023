@@ -45,7 +45,9 @@
     "testing-library/no-render-in-setup": [
       "error",
       { "allowTestingFrameworkSetupHook": "beforeEach" }
-    ]
+    ],
+    "testing-library/no-wait-for-side-effects": "off",
+    "testing-library/no-wait-for-multiple-assertions": "off"
   },
   "settings": {
     "react": {

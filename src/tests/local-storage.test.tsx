@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Search } from "components";
 
@@ -11,17 +11,20 @@ describe("local storage", () => {
       },
     });
   });
+  afterEach(() => {
+    cleanup();
+  });
 
   it("should call getItem on render", () => {
-    render(<Search />);
+    render(<Search onSearchChange={() => {}} />);
     expect(window.sessionStorage.getItem).toBeCalled();
   });
 
   it("should call setItem during unmount", async () => {
-    const { unmount } = render(<Search />);
+    const { unmount } = render(<Search onSearchChange={() => {}} />);
     const input = screen.getByRole("textbox");
     const testString = "asdfgh";
-    userEvent.type(input, testString);
+    await waitFor(() => userEvent.type(input, testString));
     unmount();
     expect(window.sessionStorage.setItem).toBeCalled();
     expect(window.sessionStorage.setItem).toBeCalledWith("input", testString);
