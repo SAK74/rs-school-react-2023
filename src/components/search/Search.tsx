@@ -29,7 +29,7 @@ export const Search: FC<SearchProps> = ({ onSearchChange }) => {
     () => () => {
       dispatch(changeValue(tempRef.current));
     },
-    []
+    [dispatch]
   );
 
   useEffect(() => {
