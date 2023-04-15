@@ -1,11 +1,11 @@
 import { Search, ListShow } from "components";
-import { STOREDKEY } from "glob-constans";
 import { useState } from "react";
+import { useTypedSelector } from "store/store";
 import { SearchParams } from "types";
 
 export const Home = () => {
   const [searchParams, setSearchParams] = useState<SearchParams>({
-    name: window.sessionStorage.getItem(STOREDKEY) || "",
+    name: useTypedSelector((state) => state.searchValue),
     status: "",
     gender: "",
   });

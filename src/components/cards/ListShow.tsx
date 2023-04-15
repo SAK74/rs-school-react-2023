@@ -16,7 +16,6 @@ export const ListShow: FC<ListProps> = ({ searchParams, url }) => {
     params: searchParams,
     url,
   });
-
   const content =
     isLoading || isFetching ? (
       <Spinner />
