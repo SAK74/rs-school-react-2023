@@ -1,7 +1,7 @@
 import { Search, ListShow } from "components";
 import { STOREDKEY } from "glob-constans";
 import { useState } from "react";
-import { SearchParams } from "services/getApi";
+import { SearchParams } from "types";
 
 export const Home = () => {
   const [searchParams, setSearchParams] = useState<SearchParams>({

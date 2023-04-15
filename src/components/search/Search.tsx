@@ -8,7 +8,7 @@ import {
   useEffect,
   useRef,
 } from "react";
-import { SearchParams } from "services/getApi";
+import { SearchParams } from "types";
 import { SearchBar } from "./SearchBar";
 import { SearchHeader } from "./SearchHeader";
 import "./style.scss";

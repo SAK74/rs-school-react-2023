@@ -54,3 +54,19 @@ export interface RickandmortyType {
 }
 
 export type CardType = UserType | RickandmortyType;
+
+export interface SearchParams {
+  name?: string;
+  status?: "alive" | "dead" | "unknown" | "";
+  gender?: "female" | "male" | "genderless" | "unknown" | "";
+}
+
+export interface RespType {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: RickandmortyType[];
+}

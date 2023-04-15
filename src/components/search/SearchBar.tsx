@@ -5,8 +5,9 @@ import {
   SetStateAction,
   useState,
   ChangeEventHandler,
+  FormEventHandler,
 } from "react";
-import { SearchParams } from "services/getApi";
+import { SearchParams } from "types";
 
 interface Props {
   value: string;
@@ -17,6 +18,7 @@ interface Props {
 export const SearchBar: FC<Props> = ({ onSearch, ...inputProps }) => {
   const [status, setStatus] = useState<SearchParams["status"]>("");
   const [gender, setGender] = useState<SearchParams["gender"]>("");
+
   const handleChange: ChangeEventHandler<HTMLSelectElement> = ({
     target: { name, value },
   }) => {
@@ -32,11 +34,12 @@ export const SearchBar: FC<Props> = ({ onSearch, ...inputProps }) => {
     }
   };
 
-  const handleClick = () => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (ev) => {
+    ev.preventDefault();
     onSearch({ name: inputProps.value, status, gender });
   };
   return (
-    <div className="search__bar">
+    <form className="search__bar" onSubmit={handleSubmit}>
       <input type="text" placeholder="" {...inputProps} />
       <select value={status} name="status" onChange={handleChange}>
         <option value="">--select status--</option>
@@ -54,7 +57,7 @@ export const SearchBar: FC<Props> = ({ onSearch, ...inputProps }) => {
           </option>
         ))}
       </select>
-      <button onClick={handleClick}>Search</button>
-    </div>
+      <button type="submit">Search</button>
+    </form>
   );
 };
