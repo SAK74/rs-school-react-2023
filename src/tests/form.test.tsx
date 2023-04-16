@@ -1,11 +1,20 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Forms } from "components/form";
+import { Provider } from "react-redux";
 import { resourceFile } from "services/resourceFile";
+import store from "store";
+import { Form } from "views";
 
 describe("Forms testing", () => {
   beforeEach(() => {
-    render(<Forms />);
+    render(
+      <>
+        <Provider store={store}>
+          <Forms />
+        </Provider>
+      </>
+    );
   });
   afterEach(() => {
     cleanup();
@@ -45,7 +54,13 @@ describe("Testing form behavior", () => {
     submitBtn: HTMLButtonElement,
     mailField: HTMLInputElement;
   beforeEach(() => {
-    render(<Forms />);
+    render(
+      <>
+        <Provider store={store}>
+          <Forms />
+        </Provider>
+      </>
+    );
     textInputs = screen.getAllByRole("textbox");
     fileField = screen.getByTestId("file-field");
     submitBtn = screen.getByRole("button", { name: "Submit" });
@@ -79,5 +94,19 @@ describe("Testing form behavior", () => {
     const filePath = await waitFor(() => resourceFile(file));
     const imgContainer = screen.getByRole<HTMLImageElement>("img");
     expect(imgContainer.src).toBe(filePath);
+  });
+});
+
+describe("Form page", () => {
+  it("Cards list should be rendered", () => {
+    render(
+      <>
+        <Provider store={store}>
+          <Form />
+        </Provider>
+      </>
+    );
+    const cards = screen.getByTestId("cards-list");
+    expect(cards).toBeInTheDocument();
   });
 });
