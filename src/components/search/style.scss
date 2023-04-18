@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+
+.search {
+  &__container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin: 0.7rem 2rem;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px gray;
+    padding: 1rem 0rem;
+    background-color: $bg-color;
+  }
+
+  &__header {
+    font-size: 2rem;
+    font-family: cursive;
+    font-weight: 600;
+    color: $font-color;
+    text-shadow: 2px 2px lightgrey;
+    margin-bottom: 0.2rem;
+  }
+
+  &__bar {
+    display: grid;
+    box-shadow: 4px 4px 15px 3px $shadow-color;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: darken($bg-color, 50%);
+    grid-template-columns: auto auto auto;
+    row-gap: 1rem;
+    > * {
+      border-radius: 5px;
+      padding: 0.4rem;
+      margin-inline: 1rem;
+    }
+    button {
+      cursor: pointer;
+      text-transform: uppercase;
+      justify-self: center;
+      grid-column: 2/3;
+    }
+  }
+}

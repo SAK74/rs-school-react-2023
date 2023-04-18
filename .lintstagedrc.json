@@ -1,0 +1,4 @@
+{
+  "src/**/*.{ts,tsx}": "eslint -c eslintrc.json",
+  "src/**/*.*": "prettier --ignore-unknown --write"
+}
