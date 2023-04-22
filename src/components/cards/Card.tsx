@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { UserType } from "types";
 import CountryFlag from "react-country-flag";
 import { ImLocation2 as LocationIcon } from "react-icons/im";

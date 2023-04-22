@@ -1,8 +1,8 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { SearchParams } from "types";
 import "./style.scss";
 import { CardsList } from "./CardsList";
-import { Spinner } from "./spinner";
+import { Spinner } from "../spinner";
 import { getAllCharacters } from "services/rtk-query-api";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query/";
 

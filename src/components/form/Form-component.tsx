@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import React, { ChangeEventHandler } from "react";
 import { Switch, Input } from "./";
 import "./form-style.scss";
 import { resourceFile } from "services/resourceFile";

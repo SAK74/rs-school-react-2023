@@ -13,7 +13,10 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "outDir": "build"
   },
-  "include": ["./src/**/*", "styled.d.ts"]
+  "include": [".", "styled.d.ts"],
+  "exclude": ["node_modules"]
 }

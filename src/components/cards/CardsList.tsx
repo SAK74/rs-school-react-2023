@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import React, { FC, ReactNode, useState } from "react";
 import { CardType, UserType, RickandmortyType } from "types";
 import { Card } from "./Card";
 import { Modal } from "./Modal";

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { RickandmortyType } from "types";
 import "./style.scss";
 
