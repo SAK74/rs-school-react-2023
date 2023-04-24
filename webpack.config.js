@@ -9,6 +9,7 @@ const globConfig = {
       {
         test: /\.tsx?$/i,
         loader: "babel-loader",
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/i,
@@ -30,6 +31,9 @@ const globConfig = {
     ],
   },
   devtool: "inline-source-map",
+  experiments: {
+    topLevelAwait: true,
+  },
 };
 
 const clientConfig = {

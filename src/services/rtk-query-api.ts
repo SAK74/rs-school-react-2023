@@ -1,6 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 import { RespType, SearchParams } from "types";
-import fetch from "cross-fetch";
+import { fetch, Headers, Request, Response } from "cross-fetch";
+
+Object.assign(globalThis, {
+  fetch,
+  Headers,
+  Request,
+  Response,
+});
 
 interface ApiParamsType {
   url?: string;
