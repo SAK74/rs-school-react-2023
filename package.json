@@ -35,7 +35,6 @@
     "lint:fix": "eslint src -c eslintrc.json --fix",
     "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "build:dev": "webpack --mode=development",
-    "build:server": "webpack --mode=development --config-name server && npm run ssr",
     "ssr": "node build/server.bundle.js"
   },
   "browserslist": {

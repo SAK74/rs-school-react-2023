@@ -11,8 +11,8 @@ export const store = configureStore({
     form: formReducer,
   },
   middleware: (getDefault) => getDefault().concat(rootApi.middleware),
+  preloadedState: globalThis.__PRELOADED_STATE__,
 });
-
 export type StoreType = ReturnType<typeof store.getState>;
 export const useTypedSelector: TypedUseSelectorHook<StoreType> = useSelector;
 export const useTypedDispatch = () => useDispatch<typeof store.dispatch>();

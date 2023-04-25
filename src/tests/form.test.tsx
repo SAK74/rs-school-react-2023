@@ -4,7 +4,7 @@ import { Forms } from "components/form";
 import { Provider } from "react-redux";
 import { resourceFile } from "services/resourceFile";
 import store from "store";
-import { Form } from "views";
+import Form from "../views/Form";
 
 describe("Forms testing", () => {
   beforeEach(() => {

@@ -3,11 +3,10 @@ import { renderToPipeableStream } from "react-dom/server";
 import App from "../src/App";
 import { configureStore } from "@reduxjs/toolkit";
 import { rootApi } from "../src/services/rtk-query-api";
-import searchReducer from "../src/store/searchValueSlice";
-import formReducer from "../src/store/formSlice";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
 import React from "react";
+import { formReducer, searchReducer } from "store";
 
 const store = configureStore({
   reducer: {
@@ -20,7 +19,8 @@ const store = configureStore({
   // preloadedState: {},
 });
 rootApi.endpoints.getAll.initiate({});
-await rootApi.util.getRunningQueriesThunk();
+await Promise.all(store.dispatch(rootApi.util.getRunningMutationsThunk()));
+
 const initialState = store.getState();
 
 export const renderHandler: RequestHandler = (req, resp) => {
@@ -39,7 +39,9 @@ export const renderHandler: RequestHandler = (req, resp) => {
       onError(error) {
         console.log("Server error: ", error);
       },
-      bootstrapScriptContent: "",
+      bootstrapScriptContent: `window.__PRELOADED_STATE__=${JSON.stringify(
+        initialState
+      )}`,
     }
   );
 };

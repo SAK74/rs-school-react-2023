@@ -6,6 +6,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "store";
 
+delete window.__PRELOADED_STATE__;
+
 const element = (
   <React.StrictMode>
     <Provider store={store}>
