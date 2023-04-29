@@ -35,7 +35,8 @@
     "lint:fix": "eslint src -c eslintrc.json --fix",
     "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "build:dev": "webpack --mode=development",
-    "ssr": "node build/server.bundle.js"
+    "ssr": "node build/server.bundle.js",
+    "test:cypress": "concurrently -k \"npm start\" \"cypress open\""
   },
   "browserslist": {
     "production": [
@@ -59,6 +60,7 @@
     "babel-loader": "^9.1.2",
     "babel-plugin-module-resolver": "^5.0.0",
     "css-loader": "^6.7.3",
+    "cypress": "^12.11.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
