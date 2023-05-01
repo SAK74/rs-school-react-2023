@@ -29,7 +29,6 @@
   },
   "scripts": {
     "start": "npm run build:dev && npm run ssr",
-    "test:e2e": "cypress run && npx nyc report --reporter=text-summary",
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint": "eslint src -c eslintrc.json",
@@ -37,6 +36,7 @@
     "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "build:dev": "webpack --mode=development",
     "ssr": "node build/server.bundle.js",
+    "e2e:coverage": "cypress run && npx nyc report --reporter=text-summary",
     "test:watch": "cypress open --browser chrome --e2e"
   },
   "browserslist": {
@@ -72,6 +72,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "husky": "^7.0.4",
+    "istanbul-lib-coverage": "^3.2.0",
     "lint-staged": "^12.4.1",
     "nyc": "^15.1.0",
     "prettier": "^2.7.1",

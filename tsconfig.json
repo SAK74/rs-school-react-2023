@@ -15,7 +15,6 @@
     "baseUrl": "src",
 
     "resolveJsonModule": true,
-    "sourceMap": true,
     "outDir": "build"
   },
   "include": [".", "styled.d.ts"],
