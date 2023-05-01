@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
 import React from "react";
 import { formReducer, searchReducer } from "store";
+import { HTML } from "./HTML";
 
 const store = configureStore({
   reducer: {
@@ -15,33 +16,27 @@ const store = configureStore({
     form: formReducer,
   },
   middleware: (getDefault) => getDefault().concat(rootApi.middleware),
-
-  // preloadedState: {},
 });
-rootApi.endpoints.getAll.initiate({});
-await Promise.all(store.dispatch(rootApi.util.getRunningMutationsThunk()));
-
 const initialState = store.getState();
 
 export const renderHandler: RequestHandler = (req, resp) => {
   const { pipe } = renderToPipeableStream(
-    <Provider store={store}>
-      <StaticRouter location={req.url}>
-        <App />
-      </StaticRouter>
-    </Provider>,
+    <HTML preloadedState={initialState}>
+      <Provider store={store}>
+        <StaticRouter location={req.url}>
+          <App />
+        </StaticRouter>
+      </Provider>
+    </HTML>,
     {
-      bootstrapScripts: ["client.bundle.js"],
       onShellReady() {
         resp.setHeader("content-type", "text/html");
-        pipe(resp), console.log("Success!");
+        pipe(resp);
+        console.log("Success!");
       },
       onError(error) {
         console.log("Server error: ", error);
       },
-      bootstrapScriptContent: `window.__PRELOADED_STATE__=${JSON.stringify(
-        initialState
-      )}`,
     }
   );
 };

@@ -15,6 +15,7 @@
           "store": "./src/store"
         }
       }
-    ]
+    ],
+    "istanbul"
   ]
 }

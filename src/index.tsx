@@ -17,5 +17,5 @@ const element = (
     </Provider>
   </React.StrictMode>
 );
-
-hydrateRoot(document, element);
+const root = document.getElementById("root") as HTMLElement;
+hydrateRoot(root, element);
