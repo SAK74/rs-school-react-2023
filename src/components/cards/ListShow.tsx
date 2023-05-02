@@ -1,9 +1,10 @@
-import { useEffect, useState, FC } from "react";
-import { RickandmortyType } from "types";
-import getData, { SearchParams } from "../../services/getApi";
+import React, { FC } from "react";
+import { SearchParams } from "types";
 import "./style.scss";
 import { CardsList } from "./CardsList";
-import { Spinner } from "./spinner";
+import { Spinner } from "../spinner";
+import { getAllCharacters } from "services/rtk-query-api";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query/";
 
 interface ListProps {
   searchParams?: SearchParams;
@@ -11,32 +12,22 @@ interface ListProps {
 }
 
 export const ListShow: FC<ListProps> = ({ searchParams, url }) => {
-  const [cards, setCards] = useState<RickandmortyType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState<string | null>(null);
-  useEffect(() => {
-    if (isLoading) {
-      return;
-    }
-    setIsLoading(true);
-    getData(searchParams, url)
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err: Error) => {
-        setIsError(err.message);
-      })
-      .finally(() => setIsLoading(false));
-  }, [searchParams]); // eslint-disable-line
+  const { data, isLoading, isError, error, isFetching } = getAllCharacters({
+    params: searchParams,
+    url,
+  });
+  const content =
+    isLoading || isFetching ? (
+      <Spinner />
+    ) : isError ? (
+      <div className="error" data-testid="error-resp">
+        {(error as FetchBaseQueryError).status +
+          " " +
+          JSON.stringify((error as FetchBaseQueryError).data as string)}
+      </div>
+    ) : (
+      data && <CardsList cards={data.results} type="api" />
+    );
 
-  const content = isLoading ? (
-    <Spinner />
-  ) : isError ? (
-    <div className="error" data-testid="error-resp">
-      {isError}
-    </div>
-  ) : (
-    <CardsList cards={cards} type="api" />
-  );
   return <>{content}</>;
 };

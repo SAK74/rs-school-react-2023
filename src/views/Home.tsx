@@ -1,17 +1,16 @@
 import { Search, ListShow } from "components";
-import { STOREDKEY } from "glob-constans";
-import { useState } from "react";
-import { SearchParams } from "services/getApi";
+import React, { useState } from "react";
+import { useTypedSelector } from "store/store";
+import { SearchParams } from "types";
 
 export const Home = () => {
-  const [searchParams, setSearchParams] = useState<SearchParams>({
-    name: window.sessionStorage.getItem(STOREDKEY) || "",
-    status: "",
-    gender: "",
-  });
+  const [searchParams, setSearchParams] = useState<SearchParams>(
+    useTypedSelector((state) => state.searchValue)
+  );
+
   return (
     <>
-      <Search onSearchChange={setSearchParams} />
+      <Search onSearchChange={setSearchParams} searchParams={searchParams} />
       <hr />
       <ListShow searchParams={searchParams} />
     </>

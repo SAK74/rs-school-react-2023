@@ -1,11 +1,12 @@
-import { useState, ChangeEventHandler } from "react";
+import React, { ChangeEventHandler } from "react";
 import { Switch, Input } from "./";
 import "./form-style.scss";
 import { resourceFile } from "services/resourceFile";
 import { FormValues } from "types";
-import { CardsList } from "components";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
+import { useTypedDispatch } from "store/store";
+import { addCard } from "store/formSlice";
 
 const initialValues: Partial<FormValues> = {
   title: "",
@@ -22,8 +23,6 @@ const nat = ["UA", "US", "GE", "FR", "GB", "CA", "FI", "NO", "BR", "DE"];
 const errText = "Fill this field!";
 
 export const Forms = () => {
-  const [cards, setCards] = useState<FormValues[]>([]);
-
   const {
     register,
     handleSubmit,
@@ -61,12 +60,36 @@ export const Forms = () => {
     if (!confirmData(formData)) {
       return;
     }
-    setCards((cards) => {
-      const temp = [...cards];
-      temp.push(formData);
-      return [...temp];
-    });
+
+    storeCard(formData);
     reset();
+  };
+
+  const dispatch = useTypedDispatch();
+  const storeCard = (card: FormValues) => {
+    dispatch(
+      addCard({
+        name: {
+          first: card.firstName,
+          last: card.lastName,
+          title: card.title,
+        },
+        dob: {
+          date: card.date,
+          age: new Date().getFullYear() - new Date(card.date).getFullYear(),
+        },
+        nat: card.nat,
+        picture: {
+          medium: card.file.image,
+        },
+        email: card.mail,
+        location: {
+          city: "Lviv",
+          country: "Ukraine",
+        },
+        login: {},
+      })
+    );
   };
 
   const handleSwitch: ChangeEventHandler<HTMLInputElement> = ({
@@ -163,30 +186,6 @@ export const Forms = () => {
           Submit
         </button>
       </form>
-      <CardsList
-        type="user"
-        cards={cards.map((card) => ({
-          name: {
-            first: card.firstName,
-            last: card.lastName,
-            title: card.title,
-          },
-          dob: {
-            date: card.date,
-            age: new Date().getFullYear() - new Date(card.date).getFullYear(),
-          },
-          nat: card.nat,
-          picture: {
-            medium: card.file.image,
-          },
-          email: card.mail,
-          location: {
-            city: "Lviv",
-            country: "Ukraine",
-          },
-          login: {},
-        }))}
-      />
     </>
   );
 };

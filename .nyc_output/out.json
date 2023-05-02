@@ -1,0 +1,389 @@
+{
+  "E:/Tato/repos/rs-school-react-2023/src/App.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/App.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/index.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/index.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/react-app-env.d.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/react-app-env.d.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/setupTests.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/setupTests.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/types.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/types.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/index.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/index.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/services/getData.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/services/getData.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/services/resourceFile.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/services/resourceFile.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/services/rtk-query-api.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/services/rtk-query-api.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/store/formSlice.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/store/formSlice.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/store/index.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/store/index.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/store/searchValueSlice.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/store/searchValueSlice.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/store/store.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/store/store.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/api.test.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/api.test.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/Card.test.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/Card.test.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/CardsList.test.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/CardsList.test.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/form.test.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/form.test.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/general.test.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/general.test.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/modal.test.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/modal.test.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/SearchBar.test.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/SearchBar.test.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/views/About.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/views/About.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/views/Form.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/views/Form.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/views/Home.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/views/Home.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/views/NotFound.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/views/NotFound.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/cards/Card.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/cards/Card.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/cards/CardsList.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/cards/CardsList.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/cards/ListShow.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/cards/ListShow.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/cards/Modal.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/cards/Modal.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/cards/MortCard.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/cards/MortCard.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/form/Form-component.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/form/Form-component.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/form/index.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/form/index.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/header/Header.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/header/Header.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/header/index.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/header/index.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/search/Search.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/search/Search.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/search/SearchBar.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/search/SearchBar.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/search/SearchHeader.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/search/SearchHeader.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/spinner/index.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/spinner/index.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/spinner/Spinner.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/spinner/Spinner.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/msw/data.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/msw/data.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/msw/handlers.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/msw/handlers.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/tests/msw/server.ts": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/tests/msw/server.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/form/input/Input.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/form/input/Input.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "E:/Tato/repos/rs-school-react-2023/src/components/form/switch/Switch.tsx": {
+    "path": "E:/Tato/repos/rs-school-react-2023/src/components/form/switch/Switch.tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  }
+}

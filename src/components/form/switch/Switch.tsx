@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from "react";
+import React, { FC, InputHTMLAttributes } from "react";
 import "./style.scss";
 
 interface SwitchProps extends InputHTMLAttributes<HTMLInputElement> {

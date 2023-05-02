@@ -1,25 +1,47 @@
-import {
-  ChangeEvent,
+import React, {
   FC,
   Dispatch,
   SetStateAction,
   useState,
   ChangeEventHandler,
+  FormEventHandler,
+  useEffect,
+  useRef,
 } from "react";
-import { SearchParams } from "services/getApi";
+import { useTypedDispatch } from "store";
+import { changeValue } from "store/searchValueSlice";
+import { SearchParams } from "types";
 
 interface Props {
-  value: string;
-  onChange: (ev: ChangeEvent<HTMLInputElement>) => void;
+  searchParams: SearchParams;
   onSearch: Dispatch<SetStateAction<SearchParams>>;
 }
 
-export const SearchBar: FC<Props> = ({ onSearch, ...inputProps }) => {
-  const [status, setStatus] = useState<SearchParams["status"]>("");
-  const [gender, setGender] = useState<SearchParams["gender"]>("");
-  const handleChange: ChangeEventHandler<HTMLSelectElement> = ({
-    target: { name, value },
-  }) => {
+export const SearchBar: FC<Props> = ({ onSearch, searchParams }) => {
+  const [name, setName] = useState(searchParams.name || "");
+  const [status, setStatus] = useState<SearchParams["status"]>(
+    searchParams.status || ""
+  );
+  const [gender, setGender] = useState<SearchParams["gender"]>(
+    searchParams.gender || ""
+  );
+
+  const tempRef = useRef({ name, status, gender });
+  useEffect(() => {
+    tempRef.current = { name, status, gender };
+  }, [name, status, gender]);
+
+  const dispatch = useTypedDispatch();
+  useEffect(
+    () => () => {
+      dispatch(changeValue(tempRef.current));
+    },
+    [dispatch]
+  );
+
+  const handleChange: ChangeEventHandler<
+    HTMLSelectElement | HTMLInputElement
+  > = ({ target: { name, value } }) => {
     switch (name) {
       case "status":
         setStatus(value as SearchParams["status"]);
@@ -27,17 +49,27 @@ export const SearchBar: FC<Props> = ({ onSearch, ...inputProps }) => {
       case "gender":
         setGender(value as SearchParams["gender"]);
         break;
+      case "name":
+        setName(value);
+        break;
       default:
         return undefined;
     }
   };
 
-  const handleClick = () => {
-    onSearch({ name: inputProps.value, status, gender });
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (ev) => {
+    ev.preventDefault();
+    onSearch({ name, status, gender });
   };
   return (
-    <div className="search__bar">
-      <input type="text" placeholder="" {...inputProps} />
+    <form className="search__bar" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="🔍"
+        name="name"
+        value={name}
+        onChange={handleChange}
+      />
       <select value={status} name="status" onChange={handleChange}>
         <option value="">--select status--</option>
         {["alive", "dead", "unknown"].map((elem) => (
@@ -54,7 +86,7 @@ export const SearchBar: FC<Props> = ({ onSearch, ...inputProps }) => {
           </option>
         ))}
       </select>
-      <button onClick={handleClick}>Search</button>
-    </div>
+      <button type="submit">Search</button>
+    </form>
   );
 };

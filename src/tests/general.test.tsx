@@ -1,13 +1,18 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import App from "App";
-import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import store from "store";
 
 describe("Testing app structure", () => {
   beforeEach(() => {
     render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
     );
   });
   afterEach(() => {
@@ -29,5 +34,23 @@ describe("Testing app structure", () => {
   it("Search block should be rendered", () => {
     const searchBlock = screen.getByTestId("search-container");
     expect(searchBlock).toBeInTheDocument();
+  });
+  it("Page about-us should be rendered", async () => {
+    const _about = screen.getByText("About us");
+    await waitFor(() => userEvent.click(_about));
+    expect(screen.getByText("Page about us...")).toBeInTheDocument();
+  });
+});
+
+describe("Not found page", () => {
+  it("Page not found should be rendered", () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={["/anymore"]}>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    );
+    expect(screen.getByText("Sorry, page don't exist...")).toBeInTheDocument();
   });
 });

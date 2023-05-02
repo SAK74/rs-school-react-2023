@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,27 +11,33 @@
     "@types/node": "^16.18.16",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "axios": "^0.27.2",
+    "concurrently": "^8.0.1",
+    "cross-fetch": "^3.1.5",
+    "express": "^4.18.2",
     "msw": "^1.2.1",
+    "nth-check": "^2.1.1",
     "react": "^18.2.0",
     "react-country-flag": "^3.0.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "sass": "^1.59.3",
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "npm run build:dev && npm run ssr",
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint": "eslint src -c eslintrc.json",
-    "fix": "eslint src -c eslintrc.json --fix",
-    "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage"
+    "lint:fix": "eslint src -c eslintrc.json --fix",
+    "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
+    "build:dev": "webpack --mode=development",
+    "ssr": "node build/server.bundle.js",
+    "e2e:coverage": "cypress run && npx nyc report --reporter=text-summary",
+    "test:watch": "cypress open --browser chrome --e2e"
   },
   "browserslist": {
     "production": [
@@ -45,8 +52,19 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.4",
+    "@cypress/code-coverage": "^3.10.4",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
+    "babel-loader": "^9.1.2",
+    "babel-plugin-istanbul": "^6.1.1",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "css-loader": "^6.7.3",
+    "cypress": "^12.11.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -54,7 +72,13 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "husky": "^7.0.4",
+    "istanbul-lib-coverage": "^3.2.0",
     "lint-staged": "^12.4.1",
-    "prettier": "^2.7.1"
+    "nyc": "^15.1.0",
+    "prettier": "^2.7.1",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2"
   }
 }

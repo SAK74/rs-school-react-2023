@@ -1,50 +1,19 @@
-import { STOREDKEY } from "glob-constans";
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  FC,
-  useState,
-  useEffect,
-  useRef,
-} from "react";
-import { SearchParams } from "services/getApi";
+import React, { Dispatch, SetStateAction, FC } from "react";
+import { SearchParams } from "types";
 import { SearchBar } from "./SearchBar";
 import { SearchHeader } from "./SearchHeader";
 import "./style.scss";
 
 interface SearchProps {
   onSearchChange: Dispatch<SetStateAction<SearchParams>>;
+  searchParams: SearchParams;
 }
 
-export const Search: FC<SearchProps> = ({ onSearchChange }) => {
-  const storedValue = window.sessionStorage.getItem(STOREDKEY);
-  const [input, setInput] = useState(storedValue || "");
-  const tempRef = useRef(input);
-
-  useEffect(
-    () => () => window.sessionStorage.setItem(STOREDKEY, tempRef.current),
-    []
-  );
-
-  useEffect(() => {
-    tempRef.current = input;
-  }, [input]);
-
-  const inputChange = ({
-    target: { value },
-  }: ChangeEvent<HTMLInputElement>) => {
-    setInput(value);
-  };
-
+export const Search: FC<SearchProps> = ({ onSearchChange, searchParams }) => {
   return (
     <div className="search__container" data-testid="search-container">
       <SearchHeader title="Search bar" />
-      <SearchBar
-        value={input}
-        onChange={inputChange}
-        onSearch={onSearchChange}
-      />
+      <SearchBar searchParams={searchParams} onSearch={onSearchChange} />
     </div>
   );
 };
